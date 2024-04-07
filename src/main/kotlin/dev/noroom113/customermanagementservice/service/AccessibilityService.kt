@@ -11,5 +11,4 @@ class AccessibilityService(
     fun addAccessibility(accessibility: Accessibility) {
         accessibilityRepository.save(accessibility)
     }
-
 }

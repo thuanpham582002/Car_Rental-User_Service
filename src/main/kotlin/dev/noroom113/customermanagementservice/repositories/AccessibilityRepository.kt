@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 
 
 @Repository
-abstract class AccessibilityRepository : JpaRepository<Accessibility, Long> {
+interface AccessibilityRepository : JpaRepository<Accessibility, Long> {
 
 }

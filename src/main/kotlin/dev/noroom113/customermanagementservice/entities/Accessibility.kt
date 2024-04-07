@@ -10,4 +10,8 @@ data class Accessibility(
     @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long, val name: String, val description: String
 ){
     constructor(name: String, description: String) : this(0, name, description)
+
+    override fun toString(): String {
+        return name
+    }
 }

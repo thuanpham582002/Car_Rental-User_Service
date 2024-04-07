@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class AccessibilityStartupRunner(
     private val accessibilityController: AccessibilityController
 ) : CommandLineRunner {
-    override fun run(vararg args: kotlin.String?) {
+    override fun run(vararg args: String?) {
         accessibilityController.addAccessibility(Accessibility("Staff", "This accessibility is for staff"))
         accessibilityController.addAccessibility(Accessibility("Customer", "This accessibility is for customers"))
     }
