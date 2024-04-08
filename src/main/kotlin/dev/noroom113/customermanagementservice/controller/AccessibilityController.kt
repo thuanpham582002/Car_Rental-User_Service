@@ -13,4 +13,9 @@ class AccessibilityController(
     fun addAccessibility(accessibility: Accessibility) {
         accessibilityService.addAccessibility(accessibility)
     }
+
+    @GetMapping("/all")
+    fun getAllAccessibilities(): List<Accessibility> {
+        return accessibilityService.getAllAccessibilities()
+    }
 }

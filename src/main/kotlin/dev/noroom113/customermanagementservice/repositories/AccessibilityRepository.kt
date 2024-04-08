@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface AccessibilityRepository : JpaRepository<Accessibility, Long> {
-
+    fun findAccessibilityByName(name: String): Accessibility?
 }
