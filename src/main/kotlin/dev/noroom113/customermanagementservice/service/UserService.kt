@@ -20,4 +20,8 @@ class UserService(
         userRepository.save(user)
         return user
     }
+
+    fun getAllUsers(): MutableList<User> {
+        return userRepository.findAll()
+    }
 }
