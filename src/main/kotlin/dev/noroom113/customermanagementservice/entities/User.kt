@@ -1,23 +1,25 @@
 package dev.noroom113.customermanagementservice.entities
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
+import jakarta.persistence.*
+import java.sql.Date
 
 @Entity(name = "users")
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long,
-    val firstName: String,
-    val lastName: String,
+    val name: String,
     val email: String,
     val userName: String,
     val password: String,
     @OneToMany
-    val accessibilitys: List<Accessibility>
+    val accessibilitys: List<Accessibility>,
+    @OneToOne
+    val indentityCard: IndentityCard,
+    @OneToOne
+    val driverLicense: DriverLicense?,
+    val created_at: Date,
+    val updated_at: Date,
 ){
     constructor(
         firstName: String,
@@ -25,7 +27,9 @@ data class User(
         email: String,
         userName: String,
         password: String,
-        accessibilitys: List<Accessibility>
-    ) : this(0, firstName, lastName, email, userName, password, accessibilitys)
+        accessibilitys: List<Accessibility>,
+        indentityCard: IndentityCard,
+        driverLicense: DriverLicense?,
+    ) : this(0, "$firstName $lastName", email, userName, password, accessibilitys, indentityCard, driverLicense, Date(System.currentTimeMillis()), Date(System.currentTimeMillis()))
 }
     
