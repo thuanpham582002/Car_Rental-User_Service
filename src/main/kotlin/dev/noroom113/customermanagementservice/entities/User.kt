@@ -22,14 +22,15 @@ data class User(
     val updated_at: Date,
 ){
     constructor(
-        firstName: String,
-        lastName: String,
+        name: String,
         email: String,
         userName: String,
         password: String,
         accessibilitys: List<Accessibility>,
         indentityCard: IndentityCard,
         driverLicense: DriverLicense?,
-    ) : this(0, "$firstName $lastName", email, userName, password, accessibilitys, indentityCard, driverLicense, Date(System.currentTimeMillis()), Date(System.currentTimeMillis()))
+        created_at: Date,
+        updated_at: Date,
+    ) : this(0, name, email, userName, password, accessibilitys, indentityCard, driverLicense, created_at, updated_at)
 }
     
