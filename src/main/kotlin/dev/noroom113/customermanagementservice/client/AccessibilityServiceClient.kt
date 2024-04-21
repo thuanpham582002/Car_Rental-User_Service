@@ -2,16 +2,29 @@ package dev.noroom113.customermanagementservice.client
 
 import jakarta.persistence.Embeddable
 import org.springframework.cloud.openfeign.FeignClient
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.http.ResponseEntity
 import org.springframework.scheduling.annotation.Scheduled
+import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
 
 @FeignClient(name = "accessibility-service", path = "/api/v1/accessibility")
 interface AccessibilityServiceClient {
 
-    @Scheduled(fixedRate = 5000)
     @GetMapping("/all")
     fun getAccessibilities(): ResponseEntity<List<Accessibility>>
+}
+
+@Configuration
+class AccessibilityResponseInterceptor(
+    private val accessibilityServiceClient: AccessibilityServiceClient
+){
+    @Scheduled(fixedRate = 5000)
+    fun getAccessibilities(){
+        val accessibilities = accessibilityServiceClient.getAccessibilities().body
+        println(accessibilities)
+    }
 }
 
 data class Accessibility(

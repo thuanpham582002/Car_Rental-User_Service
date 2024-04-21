@@ -17,16 +17,16 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
-    @Bean
-    fun authenticationManager(
-        userDetailsService: UserDetailsService,
-        passwordEncoder: PasswordEncoder): AuthenticationManager {
-        val authenticationProvider = DaoAuthenticationProvider()
-        authenticationProvider.setUserDetailsService(userDetailsService)
-        authenticationProvider.setPasswordEncoder(passwordEncoder)
-
-        return ProviderManager(authenticationProvider)
-    }
+//    @Bean
+//    fun authenticationManager(
+//        userDetailsService: UserDetailsService,
+//        passwordEncoder: PasswordEncoder): AuthenticationManager {
+//        val authenticationProvider = DaoAuthenticationProvider()
+//        authenticationProvider.setUserDetailsService(userDetailsService)
+//        authenticationProvider.setPasswordEncoder(passwordEncoder)
+//
+//        return ProviderManager(authenticationProvider)
+//    }
 
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
