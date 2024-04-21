@@ -40,6 +40,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
     runtimeOnly("com.h2database:h2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
