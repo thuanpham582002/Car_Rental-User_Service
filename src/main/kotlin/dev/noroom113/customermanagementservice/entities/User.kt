@@ -12,8 +12,8 @@ data class User(
     val email: String,
     val userName: String,
     val password: String,
-    @OneToMany
-    val accessibilitys: List<Accessibility>,
+    @ElementCollection
+    val accessibilityIds: List<Long>,
     @OneToOne
     val indentityCard: IndentityCard,
     @OneToOne
@@ -26,11 +26,24 @@ data class User(
         email: String,
         userName: String,
         password: String,
-        accessibilitys: List<Accessibility>,
+        accessibilityIds: List<Long>,
         indentityCard: IndentityCard,
         driverLicense: DriverLicense?,
         created_at: Date,
         updated_at: Date,
-    ) : this(0, name, email, userName, password, accessibilitys, indentityCard, driverLicense, created_at, updated_at)
+    ) : this(0, name, email, userName, password, accessibilityIds, indentityCard, driverLicense, created_at, updated_at)
+
+    constructor(identityId: String, username: String, email: String, password: String) : this(
+        0,
+        username,
+        email,
+        username,
+        password,
+        emptyList(),
+        IndentityCard(identityId),
+        null,
+        Date(System.currentTimeMillis()),
+        Date(System.currentTimeMillis())
+    )
 }
     

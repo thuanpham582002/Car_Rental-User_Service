@@ -16,10 +16,17 @@ class UserService(
         return userRepository.findCustomerByUserName(username) != null
     }
 
-    fun save(user: User): User {
-        userRepository.save(user)
-        return user
-    }
+//    fun save(registerRequest: RegisterRequest): User {
+//        userRepository.save(
+//            User(
+//                identityId = registerRequest.identityId,
+//                username = registerRequest.username,
+//                email = registerRequest.email,
+//                password = registerRequest.password
+//            )
+//        )
+//        return user
+//    }
 
     fun getAllUsers(): MutableList<User> {
         return userRepository.findAll()

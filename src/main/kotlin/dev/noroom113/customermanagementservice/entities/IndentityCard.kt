@@ -12,14 +12,12 @@ data class IndentityCard(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long,
     val number: String,
-    val imageBase64: String,
-    val created_at: Date,
-    val updated_at: Date,
-){
+    val created_at: Date = Date(System.currentTimeMillis()),
+    val updated_at: Date = Date(System.currentTimeMillis()),
+) {
     constructor(
         number: String,
-        imageBase64: String,
-        created_at: Date,
-        updated_at: Date,
-    ) : this(0, number, imageBase64, created_at, updated_at)
+        created_at: Date = Date(System.currentTimeMillis()),
+        updated_at: Date = Date(System.currentTimeMillis()),
+    ) : this(0, number, created_at, updated_at)
 }
