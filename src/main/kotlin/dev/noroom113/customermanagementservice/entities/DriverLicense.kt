@@ -1,5 +1,6 @@
 package dev.noroom113.customermanagementservice.entities
 
+import dev.noroom113.customermanagementservice.entities.dto.DriverLicenseDto
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -16,3 +17,11 @@ data class DriverLicense(
     val created_at: Date,
     val updated_at: Date,
 )
+
+fun DriverLicense.toDriverLicenseDto(): DriverLicenseDto {
+    return DriverLicenseDto(
+        id = id,
+        number = number,
+        imageBase64 = imageBase64,
+    )
+}

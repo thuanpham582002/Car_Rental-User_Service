@@ -9,24 +9,21 @@ class UserService(
     private val userRepository: UserRepository
 ) {
     fun findByUsername(username: String): User? {
-        return userRepository.findCustomerByUserName(username)
+        return userRepository.findUserByName(username)
+    }
+
+    fun findByIndentityId(identityId: Long): User? {
+        return userRepository.findUserByIndentityCardId(identityId)
     }
 
     fun existsByUsername(username: String): Boolean {
-        return userRepository.findCustomerByUserName(username) != null
+        return userRepository.findUserByName(username) != null
     }
 
-//    fun save(registerRequest: RegisterRequest): User {
-//        userRepository.save(
-//            User(
-//                identityId = registerRequest.identityId,
-//                username = registerRequest.username,
-//                email = registerRequest.email,
-//                password = registerRequest.password
-//            )
-//        )
-//        return user
-//    }
+    fun save(user: User): User {
+        userRepository.save(user)
+        return user
+    }
 
     fun getAllUsers(): MutableList<User> {
         return userRepository.findAll()

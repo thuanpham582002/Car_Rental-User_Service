@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface IndetityCardRepository : JpaRepository<IndentityCard, Long> {
+    fun findIndentityCardByNumber(identityId: String): IndentityCard?
 
 }
