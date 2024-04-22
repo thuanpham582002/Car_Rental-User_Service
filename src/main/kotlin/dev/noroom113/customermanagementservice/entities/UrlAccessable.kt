@@ -3,7 +3,7 @@ package dev.noroom113.customermanagementservice.entities
 import java.io.Serializable
 
 data class UrlAccessable(
-    val method: HttpMethod,
+    val method: Set<HttpMethod>,
     val uri: String,
 ) : Serializable
 

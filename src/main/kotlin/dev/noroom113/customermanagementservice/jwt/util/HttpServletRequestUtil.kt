@@ -19,13 +19,15 @@ fun HttpServletRequest.getBearerToken(): String? {
 fun HttpServletRequest.hasAccess(setUrlsAccessable: Set<UrlAccessable>): Boolean {
     val isAccess = AtomicBoolean(false)
     setUrlsAccessable.forEach {
-        val matcher = if (it.method == HttpMethod.ALL) {
-            AntPathRequestMatcher(it.uri)
-        } else {
-            AntPathRequestMatcher(it.uri, it.method.name)
-        }
-        if (matcher.matches(this)) {
-            isAccess.set(true)
+        it.method.forEach { method ->
+            val matcher = if (method == HttpMethod.ALL) {
+                AntPathRequestMatcher(it.uri)
+            } else {
+                AntPathRequestMatcher(it.uri, method.name)
+            }
+            if (matcher.matches(this)) {
+                isAccess.set(true)
+            }
         }
     }
     return isAccess.get()
