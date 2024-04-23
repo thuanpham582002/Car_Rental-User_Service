@@ -16,11 +16,20 @@ class UserService(
         return userRepository.findUserByIndentityCardId(identityId)
     }
 
+    fun findById(id: Long): User? {
+        return userRepository.findUserById(id)
+    }
+
     fun existsByUsername(username: String): Boolean {
         return userRepository.findUserByName(username) != null
     }
 
     fun save(user: User): User {
+        userRepository.save(user)
+        return user
+    }
+
+    fun update(user: User): User {
         userRepository.save(user)
         return user
     }

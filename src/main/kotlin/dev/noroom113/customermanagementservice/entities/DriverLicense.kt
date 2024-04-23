@@ -13,15 +13,15 @@ data class DriverLicense(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long,
     val number: String,
-    val imageBase64: String,
     val created_at: Date,
     val updated_at: Date,
-)
+){
+    constructor(number: String) : this(0, number, Date(System.currentTimeMillis()), Date(System.currentTimeMillis()))
+}
 
 fun DriverLicense.toDriverLicenseDto(): DriverLicenseDto {
     return DriverLicenseDto(
         id = id,
         number = number,
-        imageBase64 = imageBase64,
     )
 }

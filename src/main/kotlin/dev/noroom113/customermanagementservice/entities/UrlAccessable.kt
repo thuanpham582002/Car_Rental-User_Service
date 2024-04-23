@@ -3,8 +3,8 @@ package dev.noroom113.customermanagementservice.entities
 import java.io.Serializable
 
 data class UrlAccessable(
-    val method: Set<HttpMethod>,
     val uri: String,
+    val method: Set<HttpMethod> = setOf(HttpMethod.ALL),
 ) : Serializable
 
 enum class HttpMethod {

@@ -1,6 +1,5 @@
 package dev.noroom113.customermanagementservice.entities.dto
 
-import dev.noroom113.customermanagementservice.entities.User
 import java.io.Serializable
 
 /**

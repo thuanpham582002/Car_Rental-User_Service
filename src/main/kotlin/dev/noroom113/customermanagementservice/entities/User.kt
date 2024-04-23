@@ -32,7 +32,19 @@ data class User(
         updated_at: Date,
     ) : this(0, email, userName, password, accessibilityIds, indentityCard, driverLicense, created_at, updated_at)
 
-    constructor(identityId: String, username: String, email: String, password: String) : this(
+    constructor(identityId: String, username: String, email: String, password: String, accessibilityIds: List<Long>) : this(
+        0,
+        email,
+        username,
+        password,
+        accessibilityIds,
+        IndentityCard(identityId),
+        null,
+        Date(System.currentTimeMillis()),
+        Date(System.currentTimeMillis())
+    )
+
+    constructor(identityId: String, username: String, email: String, password: String,) : this(
         0,
         email,
         username,

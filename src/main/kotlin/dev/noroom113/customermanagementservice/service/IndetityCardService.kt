@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class IndetityCardService(
     private val indetityCardRepository: IndetityCardRepository
 ) {
-    fun findByIdentityId(identityId: String): IndentityCard? {
+    fun findByIdentityNumber(identityId: String): IndentityCard? {
         return indetityCardRepository.findIndentityCardByNumber(identityId)
     }
 }
