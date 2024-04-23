@@ -1,14 +1,19 @@
 package dev.noroom113.customermanagementservice.jwt
 
+import dev.noroom113.customermanagementservice.entities.RegisterRequest
 import dev.noroom113.customermanagementservice.jwt.interceptor.JwtInterceptor
 import dev.noroom113.customermanagementservice.jwt.util.JwtUtil
 import dev.noroom113.customermanagementservice.jwt.util.getBearerToken
 import dev.noroom113.customermanagementservice.jwt.util.hasAccess
 import dev.noroom113.customermanagementservice.entities.UrlAccessable
+import dev.noroom113.customermanagementservice.entities.dto.UserDto
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.filter.OncePerRequestFilter
 
 @Component
@@ -23,8 +28,11 @@ class JwtAuthenticationFilter(
             UrlAccessable("/swagger-resources/**"),
             UrlAccessable("/swagger-ui/**"),
             UrlAccessable("/v3/api-docs/**"),
+            UrlAccessable("/api/v1/user/login"),
+            UrlAccessable("/api/v1/user/save"),
         )
     }
+
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
